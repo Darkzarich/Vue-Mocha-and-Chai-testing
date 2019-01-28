@@ -1,13 +1,15 @@
 import { expect } from "chai";
 import { shallowMount } from "@vue/test-utils";
-import HelloWorld from "@/components/HelloWorld.vue";
+import Counter from "@/components/Counter.vue";
 
-describe("HelloWorld.vue", () => {
-  it("renders props.msg when passed", () => {
-    const msg = "new message";
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
-    });
-    expect(wrapper.text()).to.include(msg);
+const wrapper = shallowMount(Counter);
+
+describe("Counter.vue", () => {
+  it("renders correct markup", () => {
+    expect(wrapper.html()).to.match(/class="count">0<\/span>/);
+  });
+
+  it("has a button ", () => {
+    expect(wrapper.contains("button")).to.be.true;
   });
 });
